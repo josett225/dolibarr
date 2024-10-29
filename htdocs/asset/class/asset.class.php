@@ -1109,13 +1109,13 @@ class Asset extends CommonObject
 								}
 							}
 							$depreciation_ht = (float) price2num($period_amount * $nb_days / $nb_days_in_month, 'MT');
-						} else { // Annually, taking care for adjustments to shortened or extended periods (e.g., fiscal years of 9 or 15 months)					
+						} else { // Annually, taking care for adjustments to shortened or extended periods (e.g., fiscal years of 9 or 15 months)
 							$nb_days_real = num_between_day($begin_date, $end_date, 1);
-							if (($nb_days_real > 366) || (num_between_day($fiscal_period_start,$fiscal_period_end,1) < $nb_days_in_year)) { // FY Period changed
+							if (($nb_days_real > 366) || (num_between_day($fiscal_period_start, $fiscal_period_end, 1) < $nb_days_in_year)) { // FY Period changed
 								$nb_days = $nb_days_real;
 							} else {
 								$nb_days = min($nb_days_in_year, $nb_days_real);
-							}	
+							}
 							$depreciation_ht = (double) price2num($period_amount * $nb_days / $nb_days_in_year, 'MT');
 						}
 
@@ -1135,7 +1135,7 @@ class Asset extends CommonObject
 
 					// Next fiscal period (+1 day/month/year)
 					$fiscal_period_start = dol_time_plus_duree($fiscal_period_end, 1, 'd');
-					$dates_fiscal_period = getCurrentPeriodOfFiscalYear($this->db, $conf, $fiscal_period_start,'gmt');
+					$dates_fiscal_period = getCurrentPeriodOfFiscalYear($this->db, $conf, $fiscal_period_start, 'gmt');
 					if ($fields['duration_type'] == 2) { // Daily
 						$fiscal_period_end = $fiscal_period_start;
 					} elseif ($fields['duration_type'] == 1) { // Monthly
