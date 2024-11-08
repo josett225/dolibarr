@@ -852,14 +852,10 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
  */
 function num_between_day($timestampStart, $timestampEnd, $lastday = 0)
 {
-	if ($timestampStart <= $timestampEnd)
-	{
-		if ($lastday == 1)
-		{
+	if ($timestampStart <= $timestampEnd) {
+		if ($lastday == 1) {
 			$bit = 0;
-		}
-		else
-		{
+		} else {
 			$bit = 1;
 		}
 		$nbjours = (int) floor(($timestampEnd - $timestampStart) / (60 * 60 * 24)) + 1 - $bit;
